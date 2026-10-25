@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # N-Queens Backtracking Visualizer
 
 An interactive web app that visualizes the **backtracking** algorithm solving the **N-Queens problem** and displays **all solutions**.
@@ -62,3 +63,6 @@ docs/PRESENTATION.md  class presentation outline
 
 ## License
 MIT
+=======
+# N-Queens-Visualizer
+>>>>>>> 3b8e20f8cd085791b5ee87f30ef3d04ee82accba
