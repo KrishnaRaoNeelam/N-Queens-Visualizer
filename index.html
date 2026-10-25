@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>N-Queens Backtracking Visualizer</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="wrap">
+  <h1>N-Queens Backtracking Visualizer</h1>
+  <p class="sub">Watch backtracking place queens row by row, undo bad choices, and find every solution.</p>
+
+  <div class="card">
+    <div class="row">
+      <label>Board size N: <b id="nLabel">8</b>
+        <input id="n" type="range" min="4" max="12" value="8">
+      </label>
+      <label>Speed <input id="speed" type="range" min="1" max="100" value="55"></label>
+      <button id="start" class="primary">▶ Visualize</button>
+      <button id="pause">⏸ Pause</button>
+      <button id="step">⏭ Step</button>
+      <button id="reset">Reset</button>
+      <button id="solveAll">⚡ Find all solutions</button>
+      <label class="chk"><input id="unique" type="checkbox"> Unique only (ignore rotations/reflections)</label>
+    </div>
+  </div>
+
+  <div class="layout">
+    <div class="card">
+      <canvas id="board"></canvas>
+      <p id="log" class="log"></p>
+      <div class="legend">
+        <span><i style="background:var(--attack)"></i>Attacked cell</span>
+        <span><i style="background:var(--bad)"></i>Conflict (red line = attacker)</span>
+        <span>♛ Queen placed</span>
+      </div>
+    </div>
+    <div>
+      <div class="card stats">
+        <div class="stat"><b id="sFound">0</b><span>Solutions found</span></div>
+        <div class="stat"><b id="sUnique">0</b><span>Unique (symmetry)</span></div>
+        <div class="stat"><b id="sKnown">–</b><span>Known total for N</span></div>
+        <div class="stat"><b id="sPlace">0</b><span>Queens placed</span></div>
+        <div class="stat"><b id="sConf">0</b><span>Conflicts checked</span></div>
+        <div class="stat"><b id="sBack">0</b><span>Backtracks</span></div>
+      </div>
+      <div class="card">
+        <p><b id="sStatus">Ready</b></p>
+        <div class="row">
+          <button id="prev">◀ Prev</button>
+          <button id="next">Next ▶</button>
+          <button id="play">▶ Play all</button>
+        </div>
+        <p id="solLabel" class="tip">No solution selected</p>
+      </div>
+      <div class="card">
+        <b>Algorithm</b>
+<pre>place(row):
+  if row == N: save solution
+  for col in 0..N-1:
+    if safe(row, col):
+      put queen; place(row+1)
+      remove queen   // backtrack</pre>
+        <p class="tip">Safe check is O(1): one flag each for the column, the diagonal (row+col) and the anti-diagonal (row−col).</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="row between">
+      <b>All solutions</b>
+      <span class="row"><button id="gPrev">◀</button><span id="pageLabel" class="tip"></span><button id="gNext">▶</button></span>
+    </div>
+    <div id="gallery" class="gallery"></div>
+  </div>
+</div>
+<script src="js/nqueens.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

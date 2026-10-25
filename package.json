@@ -1,0 +1,7 @@
+{
+  "name": "nqueens-visualizer",
+  "version": "1.0.0",
+  "description": "Backtracking visualizer for the N-Queens problem with all solutions display.",
+  "scripts": { "start": "npx serve .", "test": "node --test" },
+  "license": "MIT"
+}
